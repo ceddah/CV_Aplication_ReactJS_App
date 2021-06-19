@@ -15,3 +15,13 @@ html {
 a {
     text-decoration: none;
 }
+
+::placeholder {
+    color: rgb(58, 58, 58);
+}
+
+input:focus, textarea:focus {
+    &::placeholder {
+        color: gray;
+    }
+}
