@@ -1,0 +1,125 @@
+@import 'resets';
+
+$border-color: rgb(209, 213, 219);
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.App {
+    height: auto;
+    width: 100%;
+
+    &__header {
+        width: 100%;
+        @include flexCenter();
+        padding: 0rem 1rem;
+        background-color: rgb(59, 130, 246);
+        height: 80px;
+        border-bottom: 4px solid rgb(30, 64, 175);
+
+        div {
+            @include flexCenter();
+
+            h2 {
+                color: #fff;
+                font-size: 30px;
+                margin-left: 1rem;
+                font-weight: 400;
+            }
+
+            .book-icon {
+                font-size: 50px;
+                color: #fff;
+            }
+        }
+
+        h4 {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 400;
+        }
+    }
+
+}
+
+.section {
+    width: 100%;
+    display: flex;
+
+    &__inputs {
+        flex: 1;
+    }
+
+    &__preview {
+        flex: 1;
+    }
+
+    &__sidebar {
+        flex: 0.3;
+        background-color: rgb(229, 231, 235);
+        padding: 0rem 1rem 5rem;
+        border-left: 2px solid $border-color;
+
+        .sidebar-title {
+            width: 100%;
+            background-color: rgb(243, 244, 246);
+            border: 2px solid $border-color;
+            border-radius: 4px;
+            padding: 0.4rem 1rem;
+            text-align: center;
+            font-size: 25px;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background-color: rgb(254, 226, 226);
+            border: 2px solid $border-color;
+            padding: 0.3rem 0.5rem;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        .set-template {
+            @include flexCenter();
+            padding: 0.5rem 1.5rem;
+            border-radius: 7px;
+            border: none;
+            outline: none;
+            background-color: rgb(191, 219, 254);
+            color: rgb(29, 78, 216);
+            margin: 0 auto;
+            cursor: pointer;
+            font-size: 16px;
+
+            span {
+                margin-left: 0.5rem;
+            }
+        }
+
+        .download-pdf {
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .info {
+            border: 2px solid $border-color;
+            background-color: rgb(243, 244, 246);
+            border-radius: 4px;
+            padding: 0.5rem;
+            line-height: 25px;
+            margin-bottom: 1rem;
+
+            ul {
+                margin-left: 1rem;
+            }
+        }
+
+        .switch {
+            margin: 2rem 0 2rem;
+            text-align: center;
+        }
+    }
+}
