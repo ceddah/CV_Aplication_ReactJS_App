@@ -7,10 +7,42 @@ import PreviewSection from './PreviewSection';
 import Sidebar from './Sidebar';
 
 const App = () => {
-    const [preview,setPreview] = useState(false)
+    const [preview,setPreview] = useState(false);
+    const [data,setData] = useState({
+        personal: {
+            img: '',
+            name: '',
+            bio: '',
+            location: '',
+            phone: '',
+            email: '',
+            linkedin: '',
+            github: ''
+        },
+        experience: [
+            {
+                position: '',
+                company: '',
+                description: '',
+                startDate: '',
+                endDate: '',
+                id: 1624163188501
+            }
+        ],
+        education: [
+            {
+                school: '',
+                degree: '',
+                startDate: '',
+                endDate: '',
+                id: 1624137888211
+            }
+        ],
+        skills: []
+    });
 
     const turnPreviewOn = () => setPreview(!preview); 
-    console.log(preview);
+    console.log(data)
     return (
         <div className="App">
             <header className="App__header">
@@ -22,8 +54,8 @@ const App = () => {
             </header>
 
             <section className="section">
-                {!preview && <InputSection />}
-                {preview && <PreviewSection />}
+                {!preview && <InputSection data={data} setData={setData} />}
+                {preview && <PreviewSection data={data} />}
                 <Sidebar isPreview={preview} turnPreview={turnPreviewOn} />
             </section>
         </div>
