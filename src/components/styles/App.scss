@@ -82,6 +82,14 @@ $border-color: rgb(209, 213, 219);
                     height: 100%;
                     object-fit: cover;
                 }
+
+                label {
+                    cursor: pointer;
+                }
+
+                #imageInput {
+                    display: none;
+                }
             }
 
             &__inputs {

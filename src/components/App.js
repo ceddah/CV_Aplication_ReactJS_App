@@ -10,7 +10,7 @@ const App = () => {
     const [preview,setPreview] = useState(false);
     const [data,setData] = useState({
         personal: {
-            img: '',
+            img: './default-placeholder.png',
             name: '',
             bio: '',
             location: '',

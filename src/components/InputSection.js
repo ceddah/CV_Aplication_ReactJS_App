@@ -115,7 +115,10 @@ const InputSection = ({data,setData}) => {
         <main className="section__inputs">
             <section className="personal-info">
                 <div className="your-image">
-                    <img src="./default-placeholder.png" alt="as" />
+                    <label htmlFor="imageInput">
+                        <img src={data.personal.img} alt="personalPhoto" />
+                    </label>
+                    <input type="file" name="img" id="imageInput" />
                 </div>
                 <div className="personal-info__inputs">
                     <input value={data.personal.name} onChange={handleChangePersonalInfo} type="text" name="name"  autoComplete="off" placeholder="Input your name here"/>
