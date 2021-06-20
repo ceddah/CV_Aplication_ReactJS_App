@@ -36,12 +36,12 @@ const InputSection = ({data,setData}) => {
         setData({...data, skills: newSkills});
     }
 
-    const handleChangePersonalInfo = (e) => {
-        const {name,value} = e.target;
-        setData({...data, personal: {...data.personal, [name]: value}});
-    }
+    // const handleChangePersonalInfo = (e) => {
+    //     const {name,value} = e.target;
+    //     setData({...data, personal: {...data.personal, [name]: value}});
+    // }
 
-    const handleChangeExperience = (handleFor, e, id) => {
+    const handleChangeAllInputs = (handleFor, e, id) => {
         const {name,value} = e.target
         const newData = data[handleFor].map(item => {
             if(item.id === id) {
@@ -57,18 +57,18 @@ const InputSection = ({data,setData}) => {
             return (
                 <div key={index} className="form-control-field">
                     <div className="controlled-inputs">
-                        <input value={data.experience[index].position} onChange={(e) => handleChangeExperience('experience', e, item.id)} type="text" name="position" placeholder="Your position here" />
-                        <input value={data.experience[index].company} onChange={(e) => handleChangeExperience('experience', e, item.id)} type="text" name="company" placeholder="Your company here" />
-                        <textarea value={data.experience[index].description} onChange={(e) => handleChangeExperience('experience', e, item.id)} name="description" cols="30" rows="5" placeholder="Job description here (optional)"></textarea>
+                        <input value={data.experience[index].position} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} type="text" name="position" placeholder="Your position here" />
+                        <input value={data.experience[index].company} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} type="text" name="company" placeholder="Your company here" />
+                        <textarea value={data.experience[index].description} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} name="description" cols="30" rows="5" placeholder="Job description here (optional)"></textarea>
                     </div>
                     <div className="dates">
                         <div className="dates-control">
                             <p>Start Date:</p>
-                            <input value={data.experience[index].startDate} onChange={(e) => handleChangeExperience('experience', e, item.id)} type="date" name="startDate" />
+                            <input value={data.experience[index].startDate} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} type="date" name="startDate" />
                         </div>
                         <div className="dates-control">
                             <p>End Date:</p>
-                            <input value={data.experience[index].endDate} onChange={(e) => handleChangeExperience('experience', e, item.id)} type="date" name="endDate" />
+                            <input value={data.experience[index].endDate} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} type="date" name="endDate" />
                         </div>
                         <button className="remove-input" ><DeleteIcon /> Delete</button>
                     </div>
@@ -82,17 +82,17 @@ const InputSection = ({data,setData}) => {
             return (
                 <div key={index + 5} className="form-control-field">
                     <div className="controlled-inputs">
-                        <input value={data.education[index].school} onChange={(e) => handleChangeExperience('education', e, item.id)} type="text" name="school" placeholder="Your school here" />
-                        <input value={data.education[index].degree} onChange={(e) => handleChangeExperience('education', e, item.id)} type="text" name="degree" placeholder="Your degree here" />
+                        <input value={data.education[index].school} onChange={(e) => handleChangeAllInputs('education', e, item.id)} type="text" name="school" placeholder="Your school here" />
+                        <input value={data.education[index].degree} onChange={(e) => handleChangeAllInputs('education', e, item.id)} type="text" name="degree" placeholder="Your degree here" />
                     </div>
                     <div className="dates">
                         <div className="dates-control">
                             <p>Start Date:</p>
-                            <input value={data.education[index].startDate} onChange={(e) => handleChangeExperience('education', e, item.id)} type="date" name="startDate" />
+                            <input value={data.education[index].startDate} onChange={(e) => handleChangeAllInputs('education', e, item.id)} type="date" name="startDate" />
                         </div>
                         <div className="dates-control">
                             <p>End Date:</p>
-                            <input value={data.education[index].endDate} onChange={(e) => handleChangeExperience('education', e, item.id)} type="date" name="endDate" />
+                            <input value={data.education[index].endDate} onChange={(e) => handleChangeAllInputs('education', e, item.id)} type="date" name="endDate" />
                         </div>
                         <button className="remove-input" ><DeleteIcon /> Delete</button>
                     </div>
@@ -116,34 +116,34 @@ const InputSection = ({data,setData}) => {
             <section className="personal-info">
                 <div className="your-image">
                     <label htmlFor="imageInput">
-                        <img src={data.personal.img} alt="personalPhoto" />
+                        <img src={data.personal[0].img} alt="personalPhoto" />
                     </label>
                     <input type="file" name="img" id="imageInput" />
                 </div>
                 <div className="personal-info__inputs">
-                    <input value={data.personal.name} onChange={handleChangePersonalInfo} type="text" name="name"  autoComplete="off" placeholder="Input your name here"/>
-                    <textarea value={data.personal.bio} onChange={handleChangePersonalInfo} name="bio" cols="30" rows="5" placeholder="Small bio about yourself here"></textarea>
+                    <input value={data.personal[0].name} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="text" name="name"  autoComplete="off" placeholder="Input your name here"/>
+                    <textarea value={data.personal[0].bio} onChange={(e) => handleChangeAllInputs('personal', e, 777)} name="bio" cols="30" rows="5" placeholder="Small bio about yourself here"></textarea>
                 </div>
                 <div className="contact-info">
                     <div className="contact-form-control">
                         <RoomIcon fontSize="small" />
-                        <input value={data.personal.location} onChange={handleChangePersonalInfo} type="text" name="location" placeholder="Your location here" />
+                        <input value={data.personal[0].location} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="text" name="location" placeholder="Your location here" />
                     </div>
                     <div className="contact-form-control">
                         <PhoneIcon fontSize="small" />
-                        <input value={data.personal.phone} onChange={handleChangePersonalInfo} type="tel" name="phone" placeholder="Your phone here" />
+                        <input value={data.personal[0].phone} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="tel" name="phone" placeholder="Your phone here" />
                     </div>
                     <div className="contact-form-control">
                         <EmailIcon fontSize="small" />
-                        <input value={data.personal.email} onChange={handleChangePersonalInfo} type="email" name="email" placeholder="Your email here" />
+                        <input value={data.personal[0].email} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="email" name="email" placeholder="Your email here" />
                     </div>
                     <div className="contact-form-control">
                         <LinkedInIcon fontSize="small" />
-                        <input value={data.personal.linkedin} onChange={handleChangePersonalInfo} type="url" name="linkedin" placeholder="Your Linkedin here" />
+                        <input value={data.personal[0].linkedin} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="url" name="linkedin" placeholder="Your Linkedin here" />
                     </div>
                     <div className="contact-form-control">
                         <GitHubIcon fontSize="small" />
-                        <input value={data.personal.github} onChange={handleChangePersonalInfo} type="url" name="github" placeholder="Your Github here" />
+                        <input value={data.personal[0].github} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="url" name="github" placeholder="Your Github here" />
                     </div>
                 </div>
             </section>

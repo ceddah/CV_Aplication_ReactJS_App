@@ -9,16 +9,19 @@ import Sidebar from './Sidebar';
 const App = () => {
     const [preview,setPreview] = useState(false);
     const [data,setData] = useState({
-        personal: {
-            img: './default-placeholder.png',
-            name: '',
-            bio: '',
-            location: '',
-            phone: '',
-            email: '',
-            linkedin: '',
-            github: ''
-        },
+        personal: [
+            {
+                img: './default-placeholder.png',
+                name: '',
+                bio: '',
+                location: '',
+                phone: '',
+                email: '',
+                linkedin: '',
+                github: '',
+                id: 777
+            }
+        ],
         experience: [
             {
                 position: '',
