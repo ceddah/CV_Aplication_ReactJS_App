@@ -11,8 +11,6 @@ import SchoolIcon from '@material-ui/icons/School';
 var protomatch = /^(https?|ftp):\/\//;
 
 const PreviewSection = ({data}) => {
-    const check = (item) => item === '' ? null : item;
-
     const previewPersonalInfo = () => {
         return data.personal.map((item,idx) => {
             return (

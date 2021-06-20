@@ -12,7 +12,7 @@ const Sidebar = ({isPreview,turnPreview,turnTemplateData}) => {
             </div>
             {!isPreview && <p className="warning">You must enable Preview Mode to be able to download the PDF!</p>}
             <h2 className="sidebar-title">Options</h2>
-            {isPreview && <button className="download-pdf set-template"><GetAppIcon /> <span>Download PDF</span></button>}
+            {isPreview && <button onClick={() => window.print()} className="download-pdf set-template"><GetAppIcon /> <span>Download PDF</span></button>}
             <button onClick={turnTemplateData} className="set-template"><ListAltIcon /> <span>Template CV</span></button>
             <h2 className="sidebar-title">Instructions</h2>
             <div className="info">
