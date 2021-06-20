@@ -11,8 +11,8 @@ import SchoolIcon from '@material-ui/icons/School';
 var protomatch = /^(https?|ftp):\/\//;
 
 const PreviewSection = ({data}) => {
-    //make some kind of check for personal info fields / maybe forEach then return null if they are all OR .every();
-    //or we can just do a check inside the map {item.name ? item.name : null}
+    const check = (item) => item === '' ? null : item;
+
     const previewPersonalInfo = () => {
         return data.personal.map((item,idx) => {
             return (
@@ -25,11 +25,11 @@ const PreviewSection = ({data}) => {
                         <p>{item.bio}</p>
                     </div>
                     <div className="preview-social">
-                        <p><RoomIcon className="social-preview" /> {item.location}</p>
-                        <a href={`tel:+${item.phone}`}><PhoneIcon className="social-preview" /> {item.phone}</a>
-                        <a href={`mailto:${item.email}`}><EmailIcon className="social-preview" /> {item.email}</a>
-                        <a href={item.linkedin}><LinkedInIcon className="social-preview" /> {item.linkedin.replace(protomatch, '')}</a>
-                        <a href={item.github}><GitHubIcon className="social-preview" /> {item.github.replace(protomatch, '')}</a>
+                        {item.location !== '' && <p><RoomIcon className="social-preview" /> {item.location}</p>}
+                        {item.phone !== '' && <a href={`tel:+${item.phone}`}><PhoneIcon className="social-preview" /> {item.phone}</a>}
+                        {item.email !== '' && <a href={`mailto:${item.email}`}><EmailIcon className="social-preview" /> {item.email}</a>}
+                        {item.linkedin !== '' && <a href={item.linkedin}><LinkedInIcon className="social-preview" /> {item.linkedin.replace(protomatch, '')}</a>}
+                        {item.github !== '' && <a href={item.github}><GitHubIcon className="social-preview" /> {item.github.replace(protomatch, '')}</a>}
                     </div>
                 </div>
             )
@@ -44,7 +44,7 @@ const PreviewSection = ({data}) => {
                 {data.experience.map((item,idx) => {
                     return (
                         <div key={idx + 10} className="preview-experience-section">
-                            <div class="exp-title">
+                            <div className="exp-title">
                                 <h3 className="preview-company">{item.company}</h3>
                                 <h3 className="preview-position">{item.position}</h3>
                             </div>
@@ -67,7 +67,7 @@ const PreviewSection = ({data}) => {
                 {data.education.map((item,idx) => {
                     return (
                         <div key={idx + 15} className="preview-education-section">
-                            <div class="edu-title">
+                            <div className="edu-title">
                                 <h3 className="preview-school">{item.school}</h3>
                                 <h3 className="preview-degree">{item.degree}</h3>
                             </div>
