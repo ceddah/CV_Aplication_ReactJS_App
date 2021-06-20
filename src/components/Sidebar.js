@@ -3,7 +3,7 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
 
-const Sidebar = ({isPreview,turnPreview}) => {
+const Sidebar = ({isPreview,turnPreview,turnTemplateData}) => {
     return (
         <aside className="section__sidebar">
             <h2 className="sidebar-title">Preview Mode</h2>
@@ -13,7 +13,7 @@ const Sidebar = ({isPreview,turnPreview}) => {
             {!isPreview && <p className="warning">You must enable Preview Mode to be able to download the PDF!</p>}
             <h2 className="sidebar-title">Options</h2>
             {isPreview && <button className="download-pdf set-template"><GetAppIcon /> <span>Download PDF</span></button>}
-            <button className="set-template"><ListAltIcon /> <span>Template CV</span></button>
+            <button onClick={turnTemplateData} className="set-template"><ListAltIcon /> <span>Template CV</span></button>
             <h2 className="sidebar-title">Instructions</h2>
             <div className="info">
                 <p>Fill the inputs you deem necessary, no input is obligatory, however some do require specific formats:</p>

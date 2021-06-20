@@ -7,7 +7,7 @@ export const template = {
             location: 'New York',
             phone: '07624123456',
             email: 'info@domain.com',
-            linkedin: 'https://www.linkedin.com/in/aron-smith/',
+            linkedin: 'https://linkedin.com/in/aron-smith/',
             github: 'https://github.com/aron-smith',
             id: 777
         }
@@ -34,7 +34,7 @@ export const template = {
             company: 'The standard',
             description: 'Marketing manager for the UK markets. Major projects included drafting of the marketing plan, which was heavily focused on ROI, as well as strategising to achieve expansion on a limited budget.',
             startDate: '2011-12-01',
-            endDate: '20153-05-21',
+            endDate: '2015-05-21',
             id: 5214163189932
         }
     ],
@@ -74,6 +74,14 @@ export const template = {
         {
             skill: 'English',
             skillID: 8118888214481
+        },
+        {
+            skill: 'Javascript',
+            skillID: 4411888821661
+        },
+        {
+            skill: 'Java',
+            skillID: 8118199614442
         },
     ]
 }

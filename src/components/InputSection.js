@@ -33,20 +33,20 @@ const InputSection = ({data,setData}) => {
         setData({...data, skills: newSkills});
     }
 
-    // const handleChangePersonalInfo = (e) => {
-    //     const {name,value} = e.target;
-    //     setData({...data, personal: {...data.personal, [name]: value}});
-    // }
-
-    const handleChangeAllInputs = (handleFor, e, id) => {
+    const handleChangeAllInputs = (objKey, e, id) => {
         const {name,value} = e.target
-        const newData = data[handleFor].map(item => {
+        const newData = data[objKey].map(item => {
             if(item.id === id) {
                 return {...item, [name]: value}
             }
             return item;
         })
-        setData({...data, [handleFor]: newData});
+        setData({...data, [objKey]: newData});
+    }
+
+    const removeInputField = (objKey,id) => {
+        const newData = data[objKey].filter(item => item.id !== id);
+        setData({...data, [objKey]: newData});
     }
 
     const handleFileInputChange = (e) => {
@@ -58,6 +58,16 @@ const InputSection = ({data,setData}) => {
             return item;
         })
         setData({...data, personal: newData});
+    }
+
+    const getRandomID = () => new Date().getTime();
+
+    const addAnotherFieldForExp = (val1,val2,val3,id) => {
+        setData({...data, experience: [...data.experience, { [val1]: '', [val2]: '', [val3]: '',startDate: '', endDate: '', id }]});
+    }
+
+    const addAnotherFieldForEdu = (val1,val2,id) => {
+        setData({...data, education: [...data.education, { [val1]: '', [val2]: '',startDate: '', endDate: '', id }]});
     }
 
     const renderExperienceInputs = () => {
@@ -78,7 +88,7 @@ const InputSection = ({data,setData}) => {
                             <p>End Date:</p>
                             <input value={data.experience[index].endDate} onChange={(e) => handleChangeAllInputs('experience', e, item.id)} type="date" name="endDate" />
                         </div>
-                        <button className="remove-input" ><DeleteIcon /> Delete</button>
+                        <button onClick={() => removeInputField('experience', item.id)} className="remove-input" ><DeleteIcon /> Delete</button>
                     </div>
                 </div>
             )
@@ -102,21 +112,11 @@ const InputSection = ({data,setData}) => {
                             <p>End Date:</p>
                             <input value={data.education[index].endDate} onChange={(e) => handleChangeAllInputs('education', e, item.id)} type="date" name="endDate" />
                         </div>
-                        <button className="remove-input" ><DeleteIcon /> Delete</button>
+                        <button onClick={() => removeInputField('education', item.id)} className="remove-input" ><DeleteIcon /> Delete</button>
                     </div>
                 </div>
             )
         })
-    }
-
-    const getRandomID = () => new Date().getTime();
-
-    const addAnotherFieldForExp = (val1,val2,val3,id) => {
-        setData({...data, experience: [...data.experience, { [val1]: '', [val2]: '', [val3]: '',startDate: '', endDate: '', id }]});
-    }
-
-    const addAnotherFieldForEdu = (val1,val2,id) => {
-        setData({...data, education: [...data.education, { [val1]: '', [val2]: '',startDate: '', endDate: '', id }]});
     }
 
     return (

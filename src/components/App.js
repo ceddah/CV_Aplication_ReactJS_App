@@ -7,6 +7,8 @@ import PreviewSection from './PreviewSection';
 import Sidebar from './Sidebar';
 import { template } from './templateData';
 
+//DELETE BUTTONS FOR INPUTS ARE NOT WORKING
+
 const App = () => {
     const [preview,setPreview] = useState(false);
     const [data,setData] = useState({
@@ -47,6 +49,8 @@ const App = () => {
 
     const turnPreviewOn = () => setPreview(!preview); 
 
+    const turnTemplateData = () => setData(template);
+
     return (
         <div className="App">
             <header className="App__header">
@@ -60,7 +64,7 @@ const App = () => {
             <section className="section">
                 {!preview && <InputSection data={data} setData={setData} />}
                 {preview && <PreviewSection data={data} />}
-                <Sidebar isPreview={preview} turnPreview={turnPreviewOn} />
+                <Sidebar isPreview={preview} turnPreview={turnPreviewOn} turnTemplateData={turnTemplateData} />
             </section>
         </div>
     )

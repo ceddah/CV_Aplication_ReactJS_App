@@ -1,4 +1,5 @@
 @import 'resets';
+@import 'PreviewSection';
 
 $border-color: rgb(209, 213, 219);
 
@@ -344,6 +345,15 @@ $border-color: rgb(209, 213, 219);
             margin: 0 auto;
             cursor: pointer;
             font-size: 16px;
+            transition: all 0.1s linear;
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            &:hover {
+                background-color: rgb(156, 193, 238);
+            }
 
             span {
                 margin-left: 0.5rem;
