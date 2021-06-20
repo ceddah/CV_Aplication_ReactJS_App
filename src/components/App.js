@@ -5,6 +5,7 @@ import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import InputSection from './InputSection';
 import PreviewSection from './PreviewSection';
 import Sidebar from './Sidebar';
+import { template } from './templateData';
 
 const App = () => {
     const [preview,setPreview] = useState(false);
@@ -45,7 +46,7 @@ const App = () => {
     });
 
     const turnPreviewOn = () => setPreview(!preview); 
-    console.log(data)
+
     return (
         <div className="App">
             <header className="App__header">

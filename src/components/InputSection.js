@@ -15,9 +15,6 @@ const InputSection = ({data,setData}) => {
     const [skillsInput,setSkillsInput] = useState('');
     const dummyRef = useRef();
 
-    //Try the same approach when setting new data for exp and edu. data.education[idx].name
-    //IF this doesn't work for inputs try adding to each new field ID
-
     const handleSkillsSubmit = (e) => {
         e.preventDefault();
         const newSkill = {
@@ -50,6 +47,17 @@ const InputSection = ({data,setData}) => {
             return item;
         })
         setData({...data, [handleFor]: newData});
+    }
+
+    const handleFileInputChange = (e) => {
+        const newImage = URL.createObjectURL(e.target.files[0]);
+        const newData = data.personal.map(item => {
+            if(item.id === 777) {
+                return {...item, [e.target.name]: newImage}
+            }
+            return item;
+        })
+        setData({...data, personal: newData});
     }
 
     const renderExperienceInputs = () => {
@@ -118,7 +126,7 @@ const InputSection = ({data,setData}) => {
                     <label htmlFor="imageInput">
                         <img src={data.personal[0].img} alt="personalPhoto" />
                     </label>
-                    <input type="file" name="img" id="imageInput" />
+                    <input type="file" onChange={handleFileInputChange} name="img" id="imageInput" />
                 </div>
                 <div className="personal-info__inputs">
                     <input value={data.personal[0].name} onChange={(e) => handleChangeAllInputs('personal', e, 777)} type="text" name="name"  autoComplete="off" placeholder="Input your name here"/>
